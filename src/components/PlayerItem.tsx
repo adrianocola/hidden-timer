@@ -25,7 +25,7 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
   });
 
   const selected = running && !paused && currentPlayer === index;
-  const notSelected = running && !paused && currentPlayer !== index;
+  const inactive = running && !paused && currentPlayer !== index;
 
   const onEditConfirm = (name: string, color: string) => {
     const suffix =
@@ -84,7 +84,9 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
     <div
       onClick={onPlayerPress}
       onContextMenu={onContextMenu}
-      className="flex-1 p-5 flex items-center justify-center relative cursor-pointer select-none overflow-hidden"
+      className={`flex-1 p-5 flex items-center justify-center relative cursor-pointer select-none overflow-hidden transition-all duration-200 ${
+        selected ? 'ring-inset ring-8 ring-white/30 z-[4]' : ''
+      } ${inactive ? 'opacity-40' : 'opacity-100'}`}
       style={{
         backgroundColor: player.color,
       }}
@@ -100,7 +102,7 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
         confirmLabel="Save"
       />
 
-      <div className={`flex ${(isGrid || isPolygonal) ? 'flex-col' : 'flex-col sm:flex-row'} items-center justify-center gap-2 sm:gap-x-12 z-[3] text-center ${notSelected ? 'opacity-50' : 'opacity-100'}`}>
+      <div className={`flex ${(isGrid || isPolygonal) ? 'flex-col' : 'flex-col sm:flex-row'} items-center justify-center gap-2 sm:gap-x-12 z-[3] text-center`}>
         <div className="flex-none flex justify-center overflow-hidden">
           <span
             className={`${currentFontSizeClass} break-words overflow-hidden text-ellipsis ${player.color === '#e5e5e5' ? 'text-black' : 'text-white'}`}
@@ -121,14 +123,6 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
           </div>
         )}
       </div>
-
-      {selected && (
-        <div className="absolute inset-0 bg-white/50 z-[2]" />
-      )}
-
-      {notSelected && (
-        <div className="absolute inset-0 bg-black/75 z-[2]" />
-      )}
     </div>
   );
 }
