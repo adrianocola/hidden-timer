@@ -103,7 +103,7 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
       <div className={`flex ${(isGrid || isPolygonal) ? 'flex-col' : 'flex-col sm:flex-row'} items-center justify-center gap-2 sm:gap-x-12 z-[3] text-center ${notSelected ? 'opacity-50' : 'opacity-100'}`}>
         <div className="flex-none flex justify-center overflow-hidden">
           <span
-            className={`${currentFontSizeClass} break-words overflow-hidden text-ellipsis ${player.color === '#e5e5e5' ? 'text-black shadow-none' : 'text-white shadow-[0px_0px_5px_rgba(0,0,0,0.5)]'}`}
+            className={`${currentFontSizeClass} break-words overflow-hidden text-ellipsis ${player.color === '#e5e5e5' ? 'text-black' : 'text-white'}`}
             style={{
               whiteSpace: 'normal',
             }}
@@ -114,7 +114,7 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
         {(!running || showPlayerTimes) && (
           <div className="flex-none flex justify-center">
             <span
-              className={`${currentFontSizeClass} ${player.color === '#e5e5e5' ? 'text-black shadow-none' : 'text-white shadow-[0px_0px_5px_rgba(0,0,0,0.5)]'}`}
+              className={`${currentFontSizeClass} ${player.color === '#e5e5e5' ? 'text-black' : 'text-white'}`}
             >
               {formatDuration(displayTime)}
             </span>
