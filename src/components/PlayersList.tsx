@@ -22,12 +22,14 @@ function PlayersList() {
     return 'grid-cols-3';
   };
 
+  const totalItems = players.length;
+
   return (
-    <div className={`flex-1 overflow-y-auto ${players.length <= 3 ? 'flex flex-col' : 'grid ' + getLayoutClass()}`}>
+    <div className={`flex-1 overflow-y-auto ${totalItems <= 3 ? 'flex flex-col' : 'grid ' + getLayoutClass()}`}>
       {players.map((player, index) => {
         const isLast = index === players.length - 1;
-        const isOdd = players.length % 2 !== 0;
-        const isGrid2 = players.length > 3 && players.length <= 8;
+        const isOdd = totalItems % 2 !== 0;
+        const isGrid2 = totalItems > 3 && totalItems <= 8;
         const colSpan = isLast && isOdd && isGrid2 ? 'col-span-2' : '';
 
         return (

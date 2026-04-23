@@ -13,7 +13,7 @@ export function randomPlayerColor(exclude?: string[]): string {
 }
 
 export function formatDuration(duration: number) {
-  let remaining = duration;
+  let remaining = Math.abs(duration);
 
   const hours = Math.floor(remaining / HOUR_MS);
   remaining -= hours * HOUR_MS;
