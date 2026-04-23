@@ -17,7 +17,7 @@ export function HiddenTimer() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-background">
+    <div className="flex flex-col h-[100dvh] w-screen overflow-hidden bg-background">
       <PlayerModal
         isVisible={playerModalVisible}
         onClose={() => setPlayerModalVisible(false)}
@@ -33,20 +33,20 @@ export function HiddenTimer() {
         <Timer />
       </div>
 
-      <div className="flex flex-row gap-[40px] pb-[20px] pt-[10px] items-center justify-center">
+      <div className="flex flex-row gap-[40px] pb-[calc(20px+env(safe-area-inset-bottom))] pt-[10px] items-center justify-center">
         {running ? (
           <>
             <ButtonIcon
               name={paused ? 'play' : 'pause'}
               onPress={paused ? unpause : pause}
             />
-            <ButtonIcon 
-              name="stop" 
+            <ButtonIcon
+              name="stop"
               onPress={() => {
                 if (window.confirm('Are you sure you want to stop the game?')) {
                   stop();
                 }
-              }} 
+              }}
             />
           </>
         ) : (
