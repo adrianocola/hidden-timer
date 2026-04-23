@@ -5,11 +5,14 @@ import { usePlayersStore, useTimerStore } from './store';
 import PlayersList from './components/PlayersList';
 import { Timer } from './components/Timer';
 import { PlayerModal } from './components/PlayerModal';
+import { useWakeLock } from './hooks/useWakeLock';
 
 export function HiddenTimer() {
   const { players, addPlayer, reset: resetPlayers } = usePlayersStore();
   const { running, paused, start, stop, pause, unpause, reset: resetTimer, showPlayerTimes, toggleShowPlayerTimes } = useTimerStore();
   const [playerModalVisible, setPlayerModalVisible] = useState(false);
+
+  useWakeLock(running && !paused);
 
   const onReset = () => {
     resetPlayers();
