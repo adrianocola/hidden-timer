@@ -103,16 +103,18 @@ export function PlayerItem({ index, player }: PlayerItemProps) {
       />
 
       <div className={`flex ${(isGrid || isPolygonal) ? 'flex-col' : 'flex-col sm:flex-row'} items-center justify-center gap-2 sm:gap-x-12 z-[3] text-center`}>
-        <div className="flex-none flex justify-center overflow-hidden">
-          <span
-            className={`${currentFontSizeClass} break-words overflow-hidden text-ellipsis ${player.color === '#e5e5e5' ? 'text-black' : 'text-white'}`}
-            style={{
-              whiteSpace: 'normal',
-            }}
-          >
-            {player.name}
-          </span>
-        </div>
+        {player.name && (
+          <div className="flex-none flex justify-center overflow-hidden">
+            <span
+              className={`${currentFontSizeClass} break-words overflow-hidden text-ellipsis ${player.color === '#e5e5e5' ? 'text-black' : 'text-white'}`}
+              style={{
+                whiteSpace: 'normal',
+              }}
+            >
+              {player.name}
+            </span>
+          </div>
+        )}
         {(!running || showPlayerTimes) && (
           <div className="flex-none flex justify-center">
             <span

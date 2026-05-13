@@ -39,10 +39,8 @@ export function PlayerModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (name.trim()) {
-      onConfirm(name.trim(), selectedColor);
-      onClose();
-    }
+    onConfirm(name.trim(), selectedColor);
+    onClose();
   };
 
   return (
@@ -58,9 +56,8 @@ export function PlayerModal({
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <input
-            autoFocus
             type="text"
-            placeholder="Player Name"
+            placeholder="Player Name (optional)"
             value={name}
             onChange={(e) => setName(e.target.value)}
             maxLength={20}
@@ -104,10 +101,7 @@ export function PlayerModal({
             </button>
             <button
               type="submit"
-              disabled={!name.trim()}
-              className={`flex-1 p-3 rounded-lg border-none text-white text-base font-bold ${
-                name.trim() ? 'bg-[#3b82f6] cursor-pointer' : 'bg-ui-disabled cursor-default'
-              }`}
+              className="flex-1 p-3 rounded-lg border-none text-white text-base font-bold bg-[#3b82f6] cursor-pointer"
             >
               {confirmLabel}
             </button>
