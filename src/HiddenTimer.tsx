@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ButtonIcon } from './components/ButtonIcon';
-import { MAX_PLAYERS, UI_COLORS } from './consts';
+import { MAX_PLAYERS } from './consts';
 import { usePlayersStore, useTimerStore } from './store';
 import PlayersList from './components/PlayersList';
 import { Timer } from './components/Timer';

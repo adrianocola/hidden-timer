@@ -2,7 +2,7 @@ import {create} from 'zustand'
 import {createJSONStorage, persist} from 'zustand/middleware';
 
 import {Player, TimerEvent} from './models';
-import {randomPlayerColor} from './utils';
+
 
 interface PlayersState {
   players: Player[];
@@ -63,7 +63,7 @@ export const useTimerStore = create(persist<TimerState>((set) => ({
   events: [],
   results: {},
   showPlayerTimes: false,
-  start: () => set((state) => {
+  start: () => set(() => {
     const now = Date.now();
     return {
       events: [

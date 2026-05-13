@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PLAYER_COLORS, UI_COLORS } from '../consts';
+import { PLAYER_COLORS } from '../consts';
 import { randomPlayerColor } from '../utils';
 import { usePlayersStore } from '../store';
 
